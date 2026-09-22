@@ -393,4 +393,101 @@ document.addEventListener("DOMContentLoaded", () => {
 
     });
 
+        // ========================================
+    // YOUTUBE BACKGROUND MUSIC
+    // ========================================
+
+    const musicToggle = document.getElementById("musicToggle");
+
+    let youtubePlayer = null;
+    let musicReady = false;
+    let musicPlaying = false;
+
+    // YouTube Player API
+    window.onYouTubeIframeAPIReady = function () {
+
+        youtubePlayer = new YT.Player("youtubePlayer", {
+            videoId: "2dNvNOGVPz4",
+
+            playerVars: {
+                autoplay: 0,
+                controls: 0,
+                loop: 1,
+                playlist: "2dNvNOGVPz4",
+                playsinline: 1,
+                rel: 0
+            },
+
+            events: {
+
+                onReady: function (event) {
+
+                    musicReady = true;
+
+                    event.target.setVolume(35);
+
+                },
+
+                onStateChange: function (event) {
+
+                    if (event.data === YT.PlayerState.PLAYING) {
+
+                        musicPlaying = true;
+
+                        if (musicToggle) {
+                            musicToggle.classList.add("playing");
+
+                            musicToggle.innerHTML =
+                                '<i class="fa-solid fa-volume-high"></i>';
+                        }
+
+                    }
+
+                    if (
+                        event.data === YT.PlayerState.PAUSED ||
+                        event.data === YT.PlayerState.ENDED
+                    ) {
+
+                        musicPlaying = false;
+
+                        if (musicToggle) {
+                            musicToggle.classList.remove("playing");
+
+                            musicToggle.innerHTML =
+                                '<i class="fa-solid fa-music"></i>';
+                        }
+
+                    }
+
+                }
+
+            }
+
+        });
+
+    };
+
+    // Tombol ON / OFF
+    if (musicToggle) {
+
+        musicToggle.addEventListener("click", function () {
+
+            if (!musicReady || !youtubePlayer) {
+                return;
+            }
+
+            if (musicPlaying) {
+
+                youtubePlayer.pauseVideo();
+
+            } else {
+
+                youtubePlayer.playVideo();
+
+            }
+
+        });
+
+    }
+
 });
