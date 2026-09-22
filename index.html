@@ -1,0 +1,374 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>MontisGear | Hiking & Outdoor</title>
+
+    <!-- CSS -->
+    <link rel="stylesheet" href="assets/css/style.css">
+
+    <!-- Font Awesome -->
+    <link rel="stylesheet"
+        href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css">
+</head>
+
+<body>
+
+    <!-- BACKGROUND -->
+    <div class="background">
+        <div class="mountain mountain-1"></div>
+        <div class="mountain mountain-2"></div>
+        <div class="mountain mountain-3"></div>
+    </div>
+
+
+    <!-- MAIN -->
+    <main class="container">
+
+        <!-- PROFILE -->
+        <section class="profile">
+
+            <div class="logo">
+                <i class="fa-solid fa-mountain-sun"></i>
+            </div>
+
+            <h1>MontisGear</h1>
+
+            <p class="username">@montisgear</p>
+
+            <p class="bio">
+                Perlengkapan hiking & outdoor untuk menemani
+                perjalananmu menuju puncak uhuyy.
+            </p>
+
+
+            <!-- SOCIAL MEDIA -->
+            <div class="social">
+
+                <a href="#" aria-label="Instagram">
+                    <i class="fa-brands fa-instagram"></i>
+                </a>
+
+                <a href="#" aria-label="TikTok">
+                    <i class="fa-brands fa-tiktok"></i>
+                </a>
+
+                <a href="#" aria-label="WhatsApp">
+                    <i class="fa-brands fa-whatsapp"></i>
+                </a>
+
+                <a href="#" aria-label="Shopee">
+                    <i class="fa-solid fa-bag-shopping"></i>
+                </a>
+
+            </div>
+
+        </section>
+
+
+        <!-- HERO PRODUCT -->
+        <section class="hero-product">
+
+            <div class="hero-image">
+
+                <i class="fa-solid fa-person-hiking"></i>
+
+            </div>
+
+
+            <div class="hero-content">
+
+                <span class="label">
+                    FEATURED COLLECTION
+                </span>
+
+                <h2>
+                    Mountain<br>
+                    Adventure
+                </h2>
+
+                <p>
+                    Gear pilihan untuk hiking,
+                    camping, dan perjalanan outdoor.
+                </p>
+
+                <button
+                    class="btn-primary"
+                    onclick="openProducts()">
+
+                    <i class="fa-solid fa-bag-shopping"></i>
+
+                    Lihat Produk
+
+                </button>
+
+            </div>
+
+        </section>
+
+
+        <!-- LINK MENU -->
+        <section class="link-container">
+
+
+            <!-- SEPATU -->
+            <a href="#" class="link-card">
+
+                <div class="link-icon">
+                    <i class="fa-solid fa-shoe-prints"></i>
+                </div>
+
+                <div class="link-info">
+
+                    <h3>
+                        Sepatu Hiking
+                    </h3>
+
+                    <p>
+                        Sepatu untuk medan outdoor
+                    </p>
+
+                </div>
+
+                <i class="fa-solid fa-arrow-right"></i>
+
+            </a>
+
+
+            <!-- CARRIER -->
+            <a href="#" class="link-card">
+
+                <div class="link-icon">
+                    <i class="fa-solid fa-person-walking-luggage"></i>
+                </div>
+
+                <div class="link-info">
+
+                    <h3>
+                        Carrier & Backpack
+                    </h3>
+
+                    <p>
+                        Bawa perlengkapan lebih nyaman
+                    </p>
+
+                </div>
+
+                <i class="fa-solid fa-arrow-right"></i>
+
+            </a>
+
+
+            <!-- JAKET -->
+            <a href="#" class="link-card">
+
+                <div class="link-icon">
+                    <i class="fa-solid fa-shirt"></i>
+                </div>
+
+                <div class="link-info">
+
+                    <h3>
+                        Jaket Outdoor
+                    </h3>
+
+                    <p>
+                        Perlindungan dari cuaca
+                    </p>
+
+                </div>
+
+                <i class="fa-solid fa-arrow-right"></i>
+
+            </a>
+
+
+            <!-- TENDA -->
+            <a href="#" class="link-card">
+
+                <div class="link-icon">
+                    <i class="fa-solid fa-tent"></i>
+                </div>
+
+                <div class="link-info">
+
+                    <h3>
+                        Tenda & Camping
+                    </h3>
+
+                    <p>
+                        Perlengkapan camping
+                    </p>
+
+                </div>
+
+                <i class="fa-solid fa-arrow-right"></i>
+
+            </a>
+
+
+            <!-- EQUIPMENT -->
+            <a href="#" class="link-card">
+
+                <div class="link-icon">
+                    <i class="fa-solid fa-compass"></i>
+                </div>
+
+                <div class="link-info">
+
+                    <h3>
+                        Hiking Equipment
+                    </h3>
+
+                    <p>
+                        Trekking pole, headlamp & lainnya
+                    </p>
+
+                </div>
+
+                <i class="fa-solid fa-arrow-right"></i>
+
+            </a>
+
+        </section>
+
+
+        <!-- PROMO -->
+        <section class="promo">
+
+            <div class="promo-icon">
+
+                <i class="fa-solid fa-fire"></i>
+
+            </div>
+
+
+            <div class="promo-text">
+
+                <h3>
+                    Weekend Outdoor Sale
+                </h3>
+
+                <p>
+                    Diskon hingga 100% untuk produk pilihanmu.
+                </p>
+
+            </div>
+
+
+            <button onclick="showPromo()">
+                Cek
+            </button>
+
+        </section>
+
+
+        <!-- QUOTE -->
+        <section class="quote">
+
+            <i class="fa-solid fa-quote-left"></i>
+
+            <p>
+                "Gear up, Run free, Feel the trail"
+            </p>
+
+            <span>
+                Aonijie, Naturehike, Rockbross, Blackdog, and many more.
+            </span>
+
+        </section>
+
+
+        <!-- FOOTER -->
+        <footer>
+
+            <strong>
+                MONTISGEAR
+            </strong>
+
+            <p>
+                Explore More. Climb Higher.
+            </p>
+
+            <small>
+                © 2026 MontisGear
+            </small>
+
+        </footer>
+
+    </main>
+
+
+
+    <!-- PRODUCT MODAL -->
+
+    <div class="modal" id="productModal">
+
+        <div class="modal-content">
+
+            <button
+                class="close"
+                onclick="closeProducts()">
+
+                <i class="fa-solid fa-xmark"></i>
+
+            </button>
+
+
+            <div class="modal-logo">
+
+                <i class="fa-solid fa-mountain"></i>
+
+            </div>
+
+
+            <h2>
+                MontisGear
+            </h2>
+
+            <p>
+                BELUM ADA COK MASIH GUA BIKIN
+            </p>
+
+
+            <div class="product-menu">
+
+                <button>
+                    <i class="fa-solid fa-shoe-prints"></i>
+                    Sepatu Hiking
+                </button>
+
+                <button>
+                    <i class="fa-solid fa-backpack"></i>
+                    Carrier
+                </button>
+
+                <button>
+                    <i class="fa-solid fa-shirt"></i>
+                    Jaket Outdoor
+                </button>
+
+                <button>
+                    <i class="fa-solid fa-tent"></i>
+                    Tenda
+                </button>
+
+                <button>
+                    <i class="fa-solid fa-compass"></i>
+                    ALAT TAWURAN
+                </button>
+
+            </div>
+
+        </div>
+
+    </div>
+
+
+    <!-- JAVASCRIPT -->
+    <script src="assets/js/script.js"></script>
+
+</body>
+</html>
