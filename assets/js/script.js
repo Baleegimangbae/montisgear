@@ -393,69 +393,82 @@ document.addEventListener("DOMContentLoaded", () => {
 
     });
 
-        // ========================================
-    // YOUTUBE BACKGROUND MUSIC
-    // ========================================
 
-    const musicToggle = document.getElementById("musicToggle");
+});
 
-    let youtubePlayer = null;
-    let musicReady = false;
-    let musicPlaying = false;
+// ========================================
+// YOUTUBE BACKGROUND MUSIC
+// ========================================
 
-    // YouTube Player API
-    window.onYouTubeIframeAPIReady = function () {
+let youtubePlayer = null;
+let musicReady = false;
+let musicPlaying = false;
 
-        youtubePlayer = new YT.Player("youtubePlayer", {
-            videoId: "2dNvNOGVPz4",
+const musicToggle = document.getElementById("musicToggle");
 
-            playerVars: {
-                autoplay: 0,
-                controls: 0,
-                loop: 1,
-                playlist: "2dNvNOGVPz4",
-                playsinline: 1,
-                rel: 0
+function createYouTubePlayer() {
+
+    if (!window.YT || !YT.Player) {
+        return;
+    }
+
+    if (!document.getElementById("youtubePlayer")) {
+        return;
+    }
+
+    youtubePlayer = new YT.Player("youtubePlayer", {
+
+        videoId: "2dNvNOGVPz4",
+
+        playerVars: {
+            autoplay: 0,
+            controls: 0,
+            loop: 1,
+            playlist: "2dNvNOGVPz4",
+            playsinline: 1,
+            rel: 0
+        },
+
+        events: {
+
+            onReady: function(event) {
+
+                musicReady = true;
+
+                event.target.setVolume(35);
+
             },
 
-            events: {
+            onStateChange: function(event) {
 
-                onReady: function (event) {
+                if (event.data === YT.PlayerState.PLAYING) {
 
-                    musicReady = true;
+                    musicPlaying = true;
 
-                    event.target.setVolume(35);
+                    if (musicToggle) {
 
-                },
+                        musicToggle.classList.add("playing");
 
-                onStateChange: function (event) {
-
-                    if (event.data === YT.PlayerState.PLAYING) {
-
-                        musicPlaying = true;
-
-                        if (musicToggle) {
-                            musicToggle.classList.add("playing");
-
-                            musicToggle.innerHTML =
-                                '<i class="fa-solid fa-volume-high"></i>';
-                        }
+                        musicToggle.innerHTML =
+                            '<i class="fa-solid fa-volume-high"></i>';
 
                     }
 
-                    if (
-                        event.data === YT.PlayerState.PAUSED ||
-                        event.data === YT.PlayerState.ENDED
-                    ) {
+                }
 
-                        musicPlaying = false;
+                if (
+                    event.data === YT.PlayerState.PAUSED ||
+                    event.data === YT.PlayerState.ENDED
+                ) {
 
-                        if (musicToggle) {
-                            musicToggle.classList.remove("playing");
+                    musicPlaying = false;
 
-                            musicToggle.innerHTML =
-                                '<i class="fa-solid fa-music"></i>';
-                        }
+                    if (musicToggle) {
+
+                        musicToggle.classList.remove("playing");
+
+                        musicToggle.innerHTML =
+                            '<i class="fa-solid fa-music"></i>';
 
                     }
 
@@ -463,31 +476,48 @@ document.addEventListener("DOMContentLoaded", () => {
 
             }
 
-        });
+        }
 
-    };
+    });
 
-    // Tombol ON / OFF
-    if (musicToggle) {
+}
 
-        musicToggle.addEventListener("click", function () {
 
-            if (!musicReady || !youtubePlayer) {
-                return;
-            }
+// YouTube API selesai dimuat
+window.onYouTubeIframeAPIReady = function() {
 
-            if (musicPlaying) {
+    createYouTubePlayer();
 
-                youtubePlayer.pauseVideo();
+};
 
-            } else {
 
-                youtubePlayer.playVideo();
+// Kalau API sudah tersedia sebelum fungsi di atas dibuat
+if (window.YT && YT.Player) {
 
-            }
+    createYouTubePlayer();
 
-        });
+}
 
-    }
 
-});
+// Tombol musik
+if (musicToggle) {
+
+    musicToggle.addEventListener("click", function() {
+
+        if (!youtubePlayer || !musicReady) {
+            return;
+        }
+
+        if (musicPlaying) {
+
+            youtubePlayer.pauseVideo();
+
+        } else {
+
+            youtubePlayer.playVideo();
+
+        }
+
+    });
+
+}

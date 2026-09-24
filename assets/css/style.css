@@ -1,3 +1,4 @@
+
 /* ========================================
    RESET
 ======================================== */
@@ -43,13 +44,10 @@ body {
     font-family: Arial, Helvetica, sans-serif;
     background: var(--black);
     color: var(--white);
-
     min-height: 100vh;
     min-height: 100dvh;
-
     overflow-x: hidden;
     overflow-y: auto;
-
     -webkit-overflow-scrolling: touch;
 }
 
@@ -61,7 +59,6 @@ body {
 .background {
     position: fixed;
     inset: 0;
-
     width: 100%;
     height: 100%;
 
@@ -77,14 +74,11 @@ body {
     background-repeat: no-repeat;
 
     z-index: -2;
-
     pointer-events: none;
 }
 
-
 .background::after {
     content: "";
-
     position: absolute;
     inset: 0;
 
@@ -105,14 +99,10 @@ body {
 
 .container {
     position: relative;
-
     width: 100%;
     max-width: 620px;
-
     margin: 0 auto;
-
     padding: 55px 20px 40px;
-
     z-index: 1;
 }
 
@@ -134,13 +124,10 @@ body {
 .logo {
     width: 105px;
     height: 105px;
-
     margin: 0 auto 22px;
 
     border-radius: 50%;
-
     background: rgba(255, 255, 255, 0.08);
-
     border: 2px solid rgba(255, 255, 255, 0.20);
 
     display: flex;
@@ -156,13 +143,10 @@ body {
     backdrop-filter: blur(10px);
 }
 
-
 .logo img {
     width: 100%;
     height: 100%;
-
     object-fit: cover;
-
     display: block;
 }
 
@@ -174,34 +158,24 @@ body {
 .profile h1 {
     font-size: 34px;
     font-weight: 700;
-
     letter-spacing: -1px;
-
     margin-bottom: 4px;
 }
 
-
 .est {
     font-size: 13px;
-
     color: var(--green-light);
-
     letter-spacing: 4px;
     text-transform: uppercase;
-
     margin-bottom: 18px;
 }
 
-
 .description {
     max-width: 470px;
-
     margin: auto;
 
     color: #d6ddd7;
-
     font-size: 14px;
-
     line-height: 1.7;
 }
 
@@ -212,32 +186,25 @@ body {
 
 .socials {
     display: flex;
-
     justify-content: center;
-
     gap: 10px;
-
     margin-top: 22px;
 }
-
 
 .social {
     width: 42px;
     height: 42px;
 
     display: flex;
-
     align-items: center;
     justify-content: center;
 
     border-radius: 50%;
 
     color: var(--white);
-
     text-decoration: none;
 
     background: rgba(255, 255, 255, 0.08);
-
     border: 1px solid var(--border);
 
     backdrop-filter: blur(10px);
@@ -245,15 +212,11 @@ body {
     transition: 0.3s ease;
 }
 
-
 .social:hover {
     transform: translateY(-4px);
-
     background: rgba(255, 255, 255, 0.15);
-
     border-color: rgba(255, 255, 255, 0.25);
 }
-
 
 .social i {
     font-size: 18px;
@@ -266,58 +229,54 @@ body {
 
 .store-menu {
     display: flex;
-
     flex-direction: column;
-
-    gap: 13px;
-
+    gap: 14px;
     margin-top: 35px;
 }
 
 
 /* ========================================
-   MENU CARD
+   PREMIUM STORE CARD
 ======================================== */
 
 .menu-card {
     position: relative;
 
     display: flex;
-
     align-items: center;
 
     width: 100%;
+    min-height: 78px;
 
-    min-height: 75px;
-
-    padding: 12px 17px;
+    padding: 13px 17px;
 
     text-decoration: none;
-
     color: var(--white);
 
     background:
         linear-gradient(
-            120deg,
-            rgba(30, 54, 38, 0.90),
-            rgba(12, 23, 15, 0.86)
+            135deg,
+            rgba(39, 63, 45, 0.92),
+            rgba(9, 18, 12, 0.94)
         );
 
-    border: 1px solid var(--border);
-
+    border: 1px solid rgba(255, 255, 255, 0.10);
     border-radius: 18px;
 
-    backdrop-filter: blur(12px);
+    backdrop-filter: blur(14px);
+    -webkit-backdrop-filter: blur(14px);
 
     box-shadow:
-        0 10px 30px rgba(0, 0, 0, 0.22);
+        0 12px 30px rgba(0, 0, 0, 0.25),
+        inset 0 1px 0 rgba(255, 255, 255, 0.05);
 
     overflow: hidden;
 
     transition:
-        transform 0.3s ease,
-        border-color 0.3s ease,
-        background 0.3s ease;
+        transform 0.35s ease,
+        border-color 0.35s ease,
+        box-shadow 0.35s ease,
+        background 0.35s ease;
 
     animation: fadeUp 0.7s ease both;
 
@@ -325,44 +284,60 @@ body {
 }
 
 
-.menu-card:nth-child(1) {
-    animation-delay: 0.1s;
+/* ========================================
+   STORE CARD SHINE
+======================================== */
+
+.menu-card::before {
+    content: "";
+
+    position: absolute;
+    top: 0;
+    left: -120%;
+
+    width: 70%;
+    height: 100%;
+
+    background:
+        linear-gradient(
+            90deg,
+            transparent,
+            rgba(255, 255, 255, 0.08),
+            transparent
+        );
+
+    transform: skewX(-20deg);
+
+    transition: left 0.6s ease;
+
+    pointer-events: none;
 }
 
-
-.menu-card:nth-child(2) {
-    animation-delay: 0.2s;
-}
-
-
-.menu-card:nth-child(3) {
-    animation-delay: 0.3s;
-}
-
-
-.menu-card:nth-child(4) {
-    animation-delay: 0.4s;
+.menu-card:hover::before {
+    left: 140%;
 }
 
 
 /* ========================================
-   MENU HOVER
+   DEFAULT CARD HOVER
 ======================================== */
 
 .menu-card:hover {
-    transform: translateY(-4px);
+    transform: translateY(-5px);
 
-    border-color: rgba(117, 148, 119, 0.55);
+    border-color:
+        rgba(117, 148, 119, 0.60);
 
     background:
         linear-gradient(
-            120deg,
-            rgba(43, 73, 51, 0.96),
-            rgba(14, 29, 19, 0.95)
+            135deg,
+            rgba(48, 78, 55, 0.98),
+            rgba(13, 28, 18, 0.98)
         );
 
     box-shadow:
-        0 15px 35px rgba(0, 0, 0, 0.30);
+        0 18px 40px rgba(0, 0, 0, 0.38),
+        0 0 25px rgba(117, 148, 119, 0.08);
 }
 
 
@@ -371,26 +346,250 @@ body {
 ======================================== */
 
 .menu-icon {
-    width: 50px;
-    height: 50px;
+    width: 51px;
+    height: 51px;
 
+    min-width: 51px;
+    max-width: 51px;
+    flex: 0 0 51px;
     flex-shrink: 0;
 
     display: flex;
-
     align-items: center;
     justify-content: center;
 
-    border-radius: 14px;
+    border-radius: 15px;
 
-    background: rgba(255, 255, 255, 0.08);
+    background:
+        rgba(255, 255, 255, 0.07);
 
-    border: 1px solid rgba(255, 255, 255, 0.10);
+    border:
+        1px solid rgba(255, 255, 255, 0.10);
+
+    box-shadow:
+        inset 0 1px 0 rgba(255, 255, 255, 0.06);
+
+    transition:
+        transform 0.35s ease,
+        background 0.35s ease,
+        border-color 0.35s ease,
+        box-shadow 0.35s ease;
 }
-
 
 .menu-icon i {
     font-size: 21px;
+
+    transition:
+        transform 0.35s ease,
+        color 0.35s ease,
+        text-shadow 0.35s ease;
+}
+
+.menu-card:hover .menu-icon {
+    transform: scale(1.07);
+}
+
+.menu-card:hover .menu-icon i {
+    transform: scale(1.08);
+}
+
+
+/* ========================================
+   SHOPEE
+======================================== */
+
+.menu-card:nth-child(1) .menu-icon {
+    background:
+        rgba(238, 77, 45, 0.13);
+
+    border-color:
+        rgba(238, 77, 45, 0.32);
+}
+
+.menu-card:nth-child(1) .menu-icon i {
+    color: #ee4d2d;
+}
+
+.menu-card:nth-child(1):hover {
+    border-color:
+        rgba(238, 77, 45, 0.60);
+
+    background:
+        linear-gradient(
+            135deg,
+            rgba(238, 77, 45, 0.15),
+            rgba(18, 22, 14, 0.97)
+        );
+
+    box-shadow:
+        0 18px 40px rgba(0, 0, 0, 0.38),
+        0 0 28px rgba(238, 77, 45, 0.15);
+}
+
+.menu-card:nth-child(1):hover .menu-icon {
+    background:
+        rgba(238, 77, 45, 0.22);
+
+    border-color:
+        rgba(238, 77, 45, 0.60);
+
+    box-shadow:
+        0 0 20px rgba(238, 77, 45, 0.16);
+}
+
+
+/* ========================================
+   TIKTOK
+======================================== */
+
+.menu-card:nth-child(2) .menu-icon {
+    background:
+        linear-gradient(
+            135deg,
+            rgba(37, 244, 238, 0.12),
+            rgba(254, 44, 85, 0.12)
+        );
+
+    border-color:
+        rgba(37, 244, 238, 0.30);
+}
+
+.menu-card:nth-child(2) .menu-icon i {
+    color: #25f4ee;
+
+    text-shadow:
+        2px 0 #fe2c55;
+}
+
+.menu-card:nth-child(2):hover {
+    border-color:
+        rgba(37, 244, 238, 0.60);
+
+    background:
+        linear-gradient(
+            135deg,
+            rgba(37, 244, 238, 0.12),
+            rgba(254, 44, 85, 0.10),
+            rgba(10, 20, 14, 0.98)
+        );
+
+    box-shadow:
+        0 18px 40px rgba(0, 0, 0, 0.38),
+        0 0 28px rgba(37, 244, 238, 0.13);
+}
+
+.menu-card:nth-child(2):hover .menu-icon {
+    background:
+        linear-gradient(
+            135deg,
+            rgba(37, 244, 238, 0.20),
+            rgba(254, 44, 85, 0.18)
+        );
+
+    border-color:
+        rgba(37, 244, 238, 0.55);
+
+    box-shadow:
+        0 0 20px rgba(37, 244, 238, 0.12);
+}
+
+
+/* ========================================
+   INSTAGRAM
+======================================== */
+
+.menu-card:nth-child(3) .menu-icon {
+    background:
+        linear-gradient(
+            135deg,
+            rgba(131, 58, 180, 0.16),
+            rgba(225, 48, 108, 0.16),
+            rgba(252, 175, 69, 0.14)
+        );
+
+    border-color:
+        rgba(225, 48, 108, 0.32);
+}
+
+.menu-card:nth-child(3) .menu-icon i {
+    color: #e1306c;
+}
+
+.menu-card:nth-child(3):hover {
+    border-color:
+        rgba(225, 48, 108, 0.60);
+
+    background:
+        linear-gradient(
+            135deg,
+            rgba(131, 58, 180, 0.13),
+            rgba(225, 48, 108, 0.11),
+            rgba(10, 20, 14, 0.98)
+        );
+
+    box-shadow:
+        0 18px 40px rgba(0, 0, 0, 0.38),
+        0 0 28px rgba(225, 48, 108, 0.14);
+}
+
+.menu-card:nth-child(3):hover .menu-icon {
+    background:
+        linear-gradient(
+            135deg,
+            rgba(131, 58, 180, 0.25),
+            rgba(225, 48, 108, 0.22),
+            rgba(252, 175, 69, 0.18)
+        );
+
+    border-color:
+        rgba(225, 48, 108, 0.55);
+
+    box-shadow:
+        0 0 20px rgba(225, 48, 108, 0.13);
+}
+
+
+/* ========================================
+   WHATSAPP
+======================================== */
+
+.menu-card:nth-child(4) .menu-icon {
+    background:
+        rgba(37, 211, 102, 0.13);
+
+    border-color:
+        rgba(37, 211, 102, 0.32);
+}
+
+.menu-card:nth-child(4) .menu-icon i {
+    color: #25d366;
+}
+
+.menu-card:nth-child(4):hover {
+    border-color:
+        rgba(37, 211, 102, 0.60);
+
+    background:
+        linear-gradient(
+            135deg,
+            rgba(37, 211, 102, 0.13),
+            rgba(10, 22, 14, 0.98)
+        );
+
+    box-shadow:
+        0 18px 40px rgba(0, 0, 0, 0.38),
+        0 0 28px rgba(37, 211, 102, 0.14);
+}
+
+.menu-card:nth-child(4):hover .menu-icon {
+    background:
+        rgba(37, 211, 102, 0.22);
+
+    border-color:
+        rgba(37, 211, 102, 0.55);
+
+    box-shadow:
+        0 0 20px rgba(37, 211, 102, 0.13);
 }
 
 
@@ -400,26 +599,38 @@ body {
 
 .menu-content {
     flex: 1;
-
     padding-left: 15px;
-
     min-width: 0;
 }
 
-
 .menu-content h3 {
     font-size: 16px;
+    font-weight: 700;
 
     margin-bottom: 5px;
-}
 
+    letter-spacing: 0.1px;
+
+    transition:
+        transform 0.3s ease;
+}
 
 .menu-content p {
     font-size: 12px;
-
     color: var(--gray);
 
     white-space: normal;
+
+    transition:
+        color 0.3s ease;
+}
+
+.menu-card:hover .menu-content h3 {
+    transform: translateX(2px);
+}
+
+.menu-card:hover .menu-content p {
+    color: #c5d0c7;
 }
 
 
@@ -436,14 +647,46 @@ body {
 
     flex-shrink: 0;
 
-    transition: 0.3s ease;
+    transition:
+        transform 0.35s ease,
+        color 0.35s ease;
 }
-
 
 .menu-card:hover .arrow {
     color: var(--white);
 
-    transform: translate(3px, -3px);
+    transform:
+        translate(4px, -4px);
+}
+
+
+/* ========================================
+   CARD ANIMATION DELAY
+======================================== */
+
+.menu-card:nth-child(1) {
+    animation-delay: 0.1s;
+}
+
+.menu-card:nth-child(2) {
+    animation-delay: 0.2s;
+}
+
+.menu-card:nth-child(3) {
+    animation-delay: 0.3s;
+}
+
+.menu-card:nth-child(4) {
+    animation-delay: 0.4s;
+}
+
+
+/* ========================================
+   MOBILE TOUCH
+======================================== */
+
+.menu-card:active {
+    transform: scale(0.98);
 }
 
 
@@ -455,7 +698,6 @@ body {
     margin-top: 28px;
 
     border-radius: 22px;
-
     overflow: hidden;
 
     border: 1px solid var(--border);
@@ -463,9 +705,9 @@ body {
     box-shadow:
         0 20px 45px rgba(0, 0, 0, 0.30);
 
-    animation: fadeUp 0.8s ease 0.4s both;
+    animation:
+        fadeUp 0.8s ease 0.4s both;
 }
-
 
 .feature-image {
     position: relative;
@@ -481,29 +723,23 @@ body {
         url("../images/gunung.jpeg");
 
     background-size: cover;
-
     background-position: center;
 
     display: flex;
-
     align-items: flex-end;
 }
-
 
 .feature-content {
     position: relative;
 
     padding: 28px;
-
     width: 100%;
 }
-
 
 .feature-content span {
     display: inline-block;
 
     font-size: 10px;
-
     letter-spacing: 3px;
 
     color: #c8d4c9;
@@ -511,21 +747,16 @@ body {
     margin-bottom: 10px;
 }
 
-
 .feature-content h2 {
     font-size: 34px;
-
     line-height: 1;
-
     letter-spacing: -1px;
 
     margin-bottom: 12px;
 }
 
-
 .feature-content p {
     font-size: 13px;
-
     color: #d2dad3;
 }
 
@@ -538,17 +769,13 @@ body {
     width: 100%;
 
     margin-top: 14px;
-
     padding: 17px 20px;
 
     display: flex;
-
     align-items: center;
-
     justify-content: space-between;
 
     border-radius: 15px;
-
     border: 1px solid var(--border);
 
     background: rgba(255, 255, 255, 0.06);
@@ -564,13 +791,10 @@ body {
     transition: 0.3s ease;
 }
 
-
 .about-btn:hover {
     background: rgba(255, 255, 255, 0.11);
-
     transform: translateY(-2px);
 }
-
 
 .about-btn i {
     color: var(--green-light);
@@ -585,29 +809,23 @@ body {
     text-align: center;
 
     margin-top: 45px;
-
     padding: 0 20px;
 }
 
-
 .quote i {
     font-size: 16px;
-
     color: var(--green-light);
 
     margin-bottom: 12px;
 }
 
-
 .quote p {
     font-family: Georgia, serif;
-
     font-style: italic;
 
     color: #d5ddd6;
 
     font-size: 14px;
-
     line-height: 1.7;
 }
 
@@ -620,25 +838,21 @@ footer {
     text-align: center;
 
     margin-top: 40px;
-
     padding-top: 20px;
 
-    border-top: 1px solid rgba(255, 255, 255, 0.08);
+    border-top:
+        1px solid rgba(255, 255, 255, 0.08);
 }
-
 
 footer p {
     font-size: 12px;
-
     color: #d6ddd7;
 
     margin-bottom: 7px;
 }
 
-
 footer span {
     font-size: 10px;
-
     color: #7e8d82;
 
     letter-spacing: 1px;
@@ -651,45 +865,40 @@ footer span {
 
 .modal {
     position: fixed;
-
     inset: 0;
 
     z-index: 1000;
 
     display: flex;
-
     align-items: center;
     justify-content: center;
 
     padding: 20px;
 
-    background: rgba(3, 8, 5, 0.78);
+    background:
+        rgba(3, 8, 5, 0.78);
 
     backdrop-filter: blur(12px);
 
     opacity: 0;
-
     visibility: hidden;
 
     transition: 0.3s ease;
 }
 
-
 .modal.active {
     opacity: 1;
-
     visibility: visible;
 }
-
 
 .modal-box {
     position: relative;
 
     width: 100%;
-
     max-width: 430px;
 
-    max-height: calc(100dvh - 40px);
+    max-height:
+        calc(100dvh - 40px);
 
     overflow-y: auto;
 
@@ -706,19 +915,23 @@ footer span {
             #0b1510
         );
 
-    border: 1px solid var(--border);
+    border:
+        1px solid var(--border);
 
     box-shadow:
         0 30px 80px rgba(0, 0, 0, 0.50);
 
-    transform: translateY(20px) scale(0.96);
+    transform:
+        translateY(20px)
+        scale(0.96);
 
     transition: 0.3s ease;
 }
 
-
 .modal.active .modal-box {
-    transform: translateY(0) scale(1);
+    transform:
+        translateY(0)
+        scale(1);
 }
 
 
@@ -736,9 +949,9 @@ footer span {
 
     overflow: hidden;
 
-    border: 2px solid rgba(255, 255, 255, 0.15);
+    border:
+        2px solid rgba(255, 255, 255, 0.15);
 }
-
 
 .modal-logo img {
     width: 100%;
@@ -747,13 +960,10 @@ footer span {
     object-fit: cover;
 }
 
-
 .modal-box h2 {
     font-size: 25px;
-
     margin-bottom: 5px;
 }
-
 
 .modal-est {
     font-size: 11px;
@@ -765,12 +975,10 @@ footer span {
     margin-bottom: 20px;
 }
 
-
 .modal-box > p:not(.modal-est) {
     color: #bac4bc;
 
     font-size: 13px;
-
     line-height: 1.8;
 
     margin-bottom: 13px;
@@ -791,16 +999,15 @@ footer span {
     height: 35px;
 
     border-radius: 50%;
-
     border: 0;
 
-    background: rgba(255, 255, 255, 0.08);
+    background:
+        rgba(255, 255, 255, 0.08);
 
     color: var(--white);
 
     cursor: pointer;
 }
-
 
 .close-button {
     margin-top: 12px;
@@ -808,7 +1015,6 @@ footer span {
     padding: 11px 25px;
 
     border: 0;
-
     border-radius: 10px;
 
     background: var(--green-light);
@@ -822,10 +1028,8 @@ footer span {
     transition: 0.3s ease;
 }
 
-
 .close-button:hover {
     transform: translateY(-2px);
-
     filter: brightness(1.1);
 }
 
@@ -835,7 +1039,6 @@ footer span {
 ======================================== */
 
 @keyframes fadeDown {
-
     from {
         opacity: 0;
         transform: translateY(-20px);
@@ -845,12 +1048,9 @@ footer span {
         opacity: 1;
         transform: translateY(0);
     }
-
 }
 
-
 @keyframes fadeUp {
-
     from {
         opacity: 0;
         transform: translateY(20px);
@@ -860,7 +1060,6 @@ footer span {
         opacity: 1;
         transform: translateY(0);
     }
-
 }
 
 
@@ -879,17 +1078,14 @@ footer span {
     pointer-events: none;
 }
 
-
 .chatbot-button {
     width: 58px;
     height: 58px;
 
     border: 0;
-
     border-radius: 50%;
 
     background: #759477;
-
     color: #08100b;
 
     font-size: 22px;
@@ -906,11 +1102,9 @@ footer span {
     -webkit-tap-highlight-color: transparent;
 }
 
-
 .chatbot-button:hover {
     transform: scale(1.08);
 }
-
 
 .chatbot-button:active {
     transform: scale(0.95);
@@ -930,10 +1124,10 @@ footer span {
     width: 340px;
     height: 470px;
 
-    max-height: calc(100dvh - 110px);
+    max-height:
+        calc(100dvh - 110px);
 
     display: flex;
-
     flex-direction: column;
 
     background:
@@ -943,7 +1137,8 @@ footer span {
             #0a130d
         );
 
-    border: 1px solid rgba(255, 255, 255, 0.12);
+    border:
+        1px solid rgba(255, 255, 255, 0.12);
 
     border-radius: 20px;
 
@@ -955,7 +1150,6 @@ footer span {
     backdrop-filter: blur(15px);
 
     opacity: 0;
-
     visibility: hidden;
 
     transform:
@@ -969,10 +1163,8 @@ footer span {
     pointer-events: none;
 }
 
-
 .chatbox.active {
     opacity: 1;
-
     visibility: visible;
 
     transform:
@@ -993,18 +1185,17 @@ footer span {
     padding: 15px 17px;
 
     display: flex;
-
     align-items: center;
-
     justify-content: space-between;
 
-    background: rgba(255, 255, 255, 0.05);
+    background:
+        rgba(255, 255, 255, 0.05);
 
-    border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+    border-bottom:
+        1px solid rgba(255, 255, 255, 0.08);
 
     flex-shrink: 0;
 }
-
 
 .chat-header strong {
     display: block;
@@ -1014,7 +1205,6 @@ footer span {
     margin-bottom: 4px;
 }
 
-
 .chat-header span {
     display: block;
 
@@ -1023,16 +1213,15 @@ footer span {
     color: #8fa494;
 }
 
-
 .chat-header button {
     width: 32px;
     height: 32px;
 
     border: 0;
-
     border-radius: 50%;
 
-    background: rgba(255, 255, 255, 0.08);
+    background:
+        rgba(255, 255, 255, 0.08);
 
     color: white;
 
@@ -1054,18 +1243,15 @@ footer span {
     padding: 17px;
 
     overflow-y: auto;
-
     overflow-x: hidden;
 
     display: flex;
-
     flex-direction: column;
 
     gap: 10px;
 
     -webkit-overflow-scrolling: touch;
 }
-
 
 .bot-message {
     align-self: flex-start;
@@ -1074,19 +1260,19 @@ footer span {
 
     padding: 11px 13px;
 
-    border-radius: 14px 14px 14px 4px;
+    border-radius:
+        14px 14px 14px 4px;
 
-    background: rgba(255, 255, 255, 0.08);
+    background:
+        rgba(255, 255, 255, 0.08);
 
     color: #e3e9e4;
 
     font-size: 12px;
-
     line-height: 1.6;
 
     word-wrap: break-word;
 }
-
 
 .user-message {
     align-self: flex-end;
@@ -1095,14 +1281,14 @@ footer span {
 
     padding: 11px 13px;
 
-    border-radius: 14px 14px 4px 14px;
+    border-radius:
+        14px 14px 4px 14px;
 
     background: #759477;
 
     color: #071009;
 
     font-size: 12px;
-
     line-height: 1.6;
 
     word-wrap: break-word;
@@ -1115,7 +1301,6 @@ footer span {
 
 .quick-questions {
     display: flex;
-
     flex-wrap: wrap;
 
     gap: 7px;
@@ -1123,15 +1308,16 @@ footer span {
     margin-top: 3px;
 }
 
-
 .quick-questions button {
     padding: 8px 10px;
 
     border-radius: 20px;
 
-    border: 1px solid rgba(255, 255, 255, 0.12);
+    border:
+        1px solid rgba(255, 255, 255, 0.12);
 
-    background: rgba(255, 255, 255, 0.05);
+    background:
+        rgba(255, 255, 255, 0.05);
 
     color: #d8e0d9;
 
@@ -1142,9 +1328,9 @@ footer span {
     transition: 0.2s ease;
 }
 
-
 .quick-questions button:hover {
-    background: rgba(255, 255, 255, 0.12);
+    background:
+        rgba(255, 255, 255, 0.12);
 }
 
 
@@ -1159,13 +1345,14 @@ footer span {
 
     padding: 12px;
 
-    border-top: 1px solid rgba(255, 255, 255, 0.08);
+    border-top:
+        1px solid rgba(255, 255, 255, 0.08);
 
-    background: rgba(0, 0, 0, 0.15);
+    background:
+        rgba(0, 0, 0, 0.15);
 
     flex-shrink: 0;
 }
-
 
 .chat-input input {
     flex: 1;
@@ -1174,32 +1361,30 @@ footer span {
 
     padding: 12px 13px;
 
-    border: 1px solid rgba(255, 255, 255, 0.10);
+    border:
+        1px solid rgba(255, 255, 255, 0.10);
 
     border-radius: 12px;
 
     outline: none;
 
-    background: rgba(255, 255, 255, 0.07);
+    background:
+        rgba(255, 255, 255, 0.07);
 
     color: white;
 
     font-size: 12px;
 }
 
-
 .chat-input input::placeholder {
     color: #7f8c82;
 }
 
-
 .chat-input button {
     width: 43px;
-
     min-width: 43px;
 
     border: 0;
-
     border-radius: 12px;
 
     background: #759477;
@@ -1210,7 +1395,6 @@ footer span {
 
     transition: 0.2s ease;
 }
-
 
 .chat-input button:hover {
     transform: scale(1.04);
@@ -1226,11 +1410,15 @@ footer span {
     html,
     body {
         width: 100%;
+
         min-height: 100%;
+
         overflow-x: hidden;
         overflow-y: auto;
     }
 
+
+    /* CONTAINER */
 
     .container {
         width: 100%;
@@ -1242,6 +1430,8 @@ footer span {
     }
 
 
+    /* LOGO */
+
     .logo {
         width: 90px;
         height: 90px;
@@ -1250,19 +1440,17 @@ footer span {
     }
 
 
+    /* TITLE */
+
     .profile h1 {
         font-size: 30px;
-
         letter-spacing: 0;
     }
 
-
     .est {
         font-size: 11px;
-
         margin-bottom: 14px;
     }
-
 
     .description {
         max-width: 330px;
@@ -1270,17 +1458,16 @@ footer span {
         padding: 0 5px;
 
         font-size: 12px;
-
         line-height: 1.7;
     }
 
 
+    /* SOCIAL */
+
     .socials {
         gap: 10px;
-
         margin-top: 20px;
     }
-
 
     .social {
         width: 42px;
@@ -1288,120 +1475,116 @@ footer span {
     }
 
 
+    /* STORE */
+
     .store-menu {
         margin-top: 30px;
-
         gap: 11px;
     }
-
 
     .menu-card {
         min-height: 68px;
 
-        padding: 11px 13px;
+        padding:
+            11px
+            13px;
 
         border-radius: 15px;
     }
-
 
     .menu-icon {
         width: 44px;
         height: 44px;
 
+        min-width: 44px;
+        max-width: 44px;
+
+        flex: 0 0 44px;
+
         border-radius: 12px;
     }
-
 
     .menu-icon i {
         font-size: 18px;
     }
 
-
     .menu-content {
         padding-left: 12px;
     }
 
-
     .menu-content h3 {
         font-size: 14px;
-
         margin-bottom: 4px;
     }
 
-
     .menu-content p {
         font-size: 10px;
-
         line-height: 1.4;
     }
-
 
     .arrow {
         font-size: 11px;
     }
 
 
+    /* FEATURE */
+
     .feature {
         margin-top: 24px;
-
         border-radius: 18px;
     }
-
 
     .feature-image {
         min-height: 230px;
     }
 
-
     .feature-content {
         padding: 23px;
     }
-
 
     .feature-content h2 {
         font-size: 30px;
     }
 
-
     .feature-content p {
         font-size: 12px;
-
         line-height: 1.6;
     }
 
 
+    /* QUOTE */
+
     .quote {
         margin-top: 38px;
-
         padding: 0 10px;
     }
-
 
     .quote p {
         font-size: 13px;
     }
 
 
+    /* FOOTER */
+
     footer {
         margin-top: 35px;
-
         padding-bottom: 25px;
     }
 
 
-    /* ================================
-       CHATBOT MOBILE
-    ================================ */
+    /* CHATBOT */
 
     .chatbot {
         right: 15px;
 
         bottom:
-            calc(15px + env(safe-area-inset-bottom));
+            calc(
+                15px +
+                env(safe-area-inset-bottom)
+            );
 
         z-index: 99999;
     }
-
 
     .chatbot-button {
         width: 54px;
@@ -1409,7 +1592,6 @@ footer span {
 
         font-size: 20px;
     }
-
 
     .chatbox {
         position: fixed;
@@ -1443,6 +1625,40 @@ footer span {
         border-radius: 18px;
     }
 
+
+    /* MUSIC */
+
+    .music-toggle {
+        left: 15px;
+
+        bottom:
+            calc(
+                15px +
+                env(safe-area-inset-bottom)
+            );
+
+        width: 48px;
+        height: 48px;
+
+        font-size: 17px;
+    }
+
+
+    /* OPENING */
+
+    .opening-content h1 {
+        font-size: 38px;
+        letter-spacing: 5px;
+    }
+
+    .opening-content span {
+        font-size: 9px;
+        letter-spacing: 4px;
+    }
+
+    .opening-content p {
+        font-size: 10px;
+    }
 }
 
 
@@ -1457,48 +1673,44 @@ footer span {
         padding-right: 12px;
     }
 
-
     .profile h1 {
         font-size: 27px;
     }
 
-
     .description {
         font-size: 11px;
     }
-
 
     .menu-card {
         padding-left: 11px;
         padding-right: 11px;
     }
 
-
     .menu-icon {
         width: 41px;
         height: 41px;
-    }
 
+        min-width: 41px;
+        max-width: 41px;
+
+        flex: 0 0 41px;
+    }
 
     .menu-content {
         padding-left: 10px;
     }
 
-
     .menu-content h3 {
         font-size: 13px;
     }
-
 
     .menu-content p {
         font-size: 9px;
     }
 
-
     .chatbot {
         right: 12px;
     }
-
 
     .chatbox {
         right: 10px;
@@ -1508,7 +1720,6 @@ footer span {
                 100vw - 20px
             );
     }
-
 }
 
 
@@ -1523,7 +1734,6 @@ footer span {
         padding-bottom: 80px;
     }
 
-
     .chatbox {
         height:
             calc(
@@ -1535,7 +1745,6 @@ footer span {
                 100dvh - 90px
             );
     }
-
 }
 
 
@@ -1545,16 +1754,21 @@ footer span {
 
 #youtubePlayer {
     position: fixed;
+
     width: 1px;
     height: 1px;
+
     left: -100px;
     bottom: 0;
+
     opacity: 0;
+
     pointer-events: none;
 }
 
 .music-toggle {
     position: fixed;
+
     left: 20px;
     bottom: 20px;
 
@@ -1565,10 +1779,14 @@ footer span {
     align-items: center;
     justify-content: center;
 
-    border: 1px solid rgba(255, 255, 255, 0.18);
+    border:
+        1px solid rgba(255, 255, 255, 0.18);
+
     border-radius: 50%;
 
-    background: rgba(8, 14, 10, 0.85);
+    background:
+        rgba(8, 14, 10, 0.85);
+
     color: #fff;
 
     backdrop-filter: blur(12px);
@@ -1591,28 +1809,40 @@ footer span {
 }
 
 .music-toggle.playing {
-    animation: musicPulse 1.5s infinite;
+    animation:
+        musicPulse 1.5s infinite;
 }
 
 .music-toggle.playing i {
-    animation: musicRotate 2s linear infinite;
+    animation:
+        musicRotate 2s linear infinite;
 }
 
+
+/* ========================================
+   MUSIC ANIMATION
+======================================== */
+
 @keyframes musicPulse {
+
     0% {
-        box-shadow: 0 0 0 rgba(255, 255, 255, 0);
+        box-shadow:
+            0 0 0 rgba(255, 255, 255, 0);
     }
 
     50% {
-        box-shadow: 0 0 20px rgba(255, 255, 255, 0.25);
+        box-shadow:
+            0 0 20px rgba(255, 255, 255, 0.25);
     }
 
     100% {
-        box-shadow: 0 0 0 rgba(255, 255, 255, 0);
+        box-shadow:
+            0 0 0 rgba(255, 255, 255, 0);
     }
 }
 
 @keyframes musicRotate {
+
     from {
         transform: rotate(0deg);
     }
@@ -1622,18 +1852,1104 @@ footer span {
     }
 }
 
-/* MOBILE */
 
-@media (max-width: 600px) {
+/* ========================================
+   MONTIS GEAR - OPENING DOOR
+======================================== */
 
-    .music-toggle {
-        left: 15px;
-        bottom: calc(15px + env(safe-area-inset-bottom));
+.opening-screen {
+    position: fixed;
 
-        width: 48px;
-        height: 48px;
+    inset: 0;
+
+    width: 100%;
+    height: 100dvh;
+
+    z-index: 100000;
+
+    pointer-events: none;
+
+    overflow: hidden;
+}
+
+
+/* ========================================
+   PANEL KIRI
+======================================== */
+
+.opening-screen::before {
+    content: "";
+
+    position: absolute;
+
+    inset: 0;
+
+    background: #050c07;
+
+    clip-path:
+        polygon(
+            0 0,
+            50% 0,
+            50% 100%,
+            0 100%
+        );
+
+    animation:
+        doorLeft
+        1.4s
+        cubic-bezier(.77, 0, .18, 1)
+        forwards;
+}
+
+
+/* ========================================
+   PANEL KANAN
+======================================== */
+
+.opening-screen::after {
+    content: "";
+
+    position: absolute;
+
+    inset: 0;
+
+    background: #050c07;
+
+    clip-path:
+        polygon(
+            50% 0,
+            100% 0,
+            100% 100%,
+            50% 100%
+        );
+
+    animation:
+        doorRight
+        1.4s
+        cubic-bezier(.77, 0, .18, 1)
+        forwards;
+}
+
+
+/* ========================================
+   OPENING CONTENT
+======================================== */
+
+.opening-content {
+    position: absolute;
+
+    inset: 0;
+
+    z-index: 2;
+
+    display: flex;
+    flex-direction: column;
+
+    align-items: center;
+    justify-content: center;
+
+    color: #fff;
+
+    text-align: center;
+
+    animation:
+        openingContent
+        1s
+        ease
+        forwards;
+
+    animation-delay: 0.2s;
+}
+
+.opening-line {
+    width: 60px;
+    height: 1px;
+
+    background:
+        rgba(255, 255, 255, 0.6);
+
+    margin-bottom: 20px;
+}
+
+.opening-content p {
+    margin:
+        0 0 15px;
+
+    font-size: 11px;
+
+    letter-spacing: 5px;
+
+    opacity: 0.6;
+}
+
+.opening-content h1 {
+    margin: 0;
+
+    font-size:
+        clamp(
+            38px,
+            8vw,
+            80px
+        );
+
+    letter-spacing: 8px;
+
+    font-weight: 800;
+}
+
+.opening-content span {
+    display: block;
+
+    margin-top: 15px;
+
+    font-size: 11px;
+
+    letter-spacing: 6px;
+
+    opacity: 0.6;
+}
+
+
+/* ========================================
+   ANIMASI BUKA DARI TENGAH
+======================================== */
+
+@keyframes doorLeft {
+
+    0% {
+        clip-path:
+            polygon(
+                0 0,
+                50% 0,
+                50% 100%,
+                0 100%
+            );
+    }
+
+    100% {
+        clip-path:
+            polygon(
+                0 0,
+                0 0,
+                0 100%,
+                0 100%
+            );
+    }
+}
+
+@keyframes doorRight {
+
+    0% {
+        clip-path:
+            polygon(
+                50% 0,
+                100% 0,
+                100% 100%,
+                50% 100%
+            );
+    }
+
+    100% {
+        clip-path:
+            polygon(
+                100% 0,
+                100% 0,
+                100% 100%,
+                100% 100%
+            );
+    }
+}
+
+
+/* ========================================
+   TEXT MENGHILANG
+======================================== */
+
+@keyframes openingContent {
+
+    0% {
+        opacity: 1;
+        transform: scale(1);
+    }
+
+    60% {
+        opacity: 1;
+        transform: scale(1.03);
+    }
+
+    100% {
+        opacity: 0;
+        transform: scale(1.08);
+    }
+}
+
+/* ========================================
+   MONTIS GEAR - ATMOSPHERIC ANIMATION
+======================================== */
+
+
+/* ========================================
+   PARALLAX BACKGROUND
+======================================== */
+
+.background {
+    --parallax-x: 0px;
+    --parallax-y: 0px;
+
+    transform:
+        translate3d(
+            var(--parallax-x),
+            var(--parallax-y),
+            0
+        )
+        scale(1.04);
+
+    transition:
+        transform 0.15s ease-out;
+
+    will-change: transform;
+}
+
+
+/* ========================================
+   FOG / KABUT
+======================================== */
+
+.background::before {
+    content: "";
+
+    position: absolute;
+    inset: -15%;
+
+    background:
+        radial-gradient(
+            ellipse at 20% 70%,
+            rgba(190, 205, 191, 0.08),
+            transparent 35%
+        ),
+        radial-gradient(
+            ellipse at 75% 55%,
+            rgba(210, 220, 210, 0.06),
+            transparent 38%
+        ),
+        radial-gradient(
+            ellipse at 50% 100%,
+            rgba(120, 145, 125, 0.08),
+            transparent 45%
+        );
+
+    filter: blur(20px);
+
+    opacity: 0.7;
+
+    animation:
+        fogMove
+        18s
+        ease-in-out
+        infinite alternate;
+
+    pointer-events: none;
+}
+
+
+/* ========================================
+   FOG ANIMATION
+======================================== */
+
+@keyframes fogMove {
+
+    0% {
+        transform:
+            translate3d(-2%, 1%, 0)
+            scale(1);
+    }
+
+    50% {
+        transform:
+            translate3d(2%, -1%, 0)
+            scale(1.04);
+    }
+
+    100% {
+        transform:
+            translate3d(-1%, 2%, 0)
+            scale(1.02);
+    }
+}
+
+
+/* ========================================
+   GRAIN / FILM TEXTURE
+======================================== */
+
+.background::after {
+    background:
+        radial-gradient(
+            circle at 50% 10%,
+            rgba(67, 105, 76, 0.25),
+            transparent 45%
+        ),
+        repeating-radial-gradient(
+            circle at 0 0,
+            rgba(255, 255, 255, 0.025) 0,
+            rgba(255, 255, 255, 0.025) 1px,
+            transparent 1px,
+            transparent 3px
+        );
+
+    opacity: 0.55;
+
+    animation:
+        grainMove
+        0.35s
+        steps(2)
+        infinite;
+}
+
+
+/* ========================================
+   GRAIN ANIMATION
+======================================== */
+
+@keyframes grainMove {
+
+    0% {
+        transform: translate(0, 0);
+    }
+
+    25% {
+        transform: translate(-1%, 1%);
+    }
+
+    50% {
+        transform: translate(1%, -1%);
+    }
+
+    75% {
+        transform: translate(1%, 1%);
+    }
+
+    100% {
+        transform: translate(-1%, -1%);
+    }
+}
+
+
+/* ========================================
+   PROFILE FLOAT
+======================================== */
+
+.profile {
+    animation:
+        fadeDown 0.8s ease,
+        profileFloat 6s ease-in-out 1s infinite;
+}
+
+@keyframes profileFloat {
+
+    0%,
+    100% {
+        transform: translateY(0);
+    }
+
+    50% {
+        transform: translateY(-3px);
+    }
+}
+
+
+/* ========================================
+   LOGO SOFT GLOW
+======================================== */
+
+.logo {
+    animation:
+        logoBreath 5s ease-in-out infinite;
+}
+
+@keyframes logoBreath {
+
+    0%,
+    100% {
+        box-shadow:
+            0 20px 50px rgba(0, 0, 0, 0.45),
+            0 0 30px rgba(105, 145, 112, 0.12);
+    }
+
+    50% {
+        box-shadow:
+            0 20px 50px rgba(0, 0, 0, 0.45),
+            0 0 42px rgba(105, 145, 112, 0.20);
+    }
+}
+
+
+/* ========================================
+   STORE CARD MICRO FLOAT
+======================================== */
+
+.menu-card:nth-child(1) {
+    animation:
+        fadeUp 0.7s ease 0.1s both,
+        cardFloat 7s ease-in-out 1.5s infinite;
+}
+
+.menu-card:nth-child(2) {
+    animation:
+        fadeUp 0.7s ease 0.2s both,
+        cardFloat 7s ease-in-out 2s infinite;
+}
+
+.menu-card:nth-child(3) {
+    animation:
+        fadeUp 0.7s ease 0.3s both,
+        cardFloat 7s ease-in-out 2.5s infinite;
+}
+
+.menu-card:nth-child(4) {
+    animation:
+        fadeUp 0.7s ease 0.4s both,
+        cardFloat 7s ease-in-out 3s infinite;
+}
+
+@keyframes cardFloat {
+
+    0%,
+    100% {
+        transform: translateY(0);
+    }
+
+    50% {
+        transform: translateY(-2px);
+    }
+}
+
+
+/* ========================================
+   FEATURE IMAGE MICRO ZOOM
+======================================== */
+
+.feature-image {
+    overflow: hidden;
+}
+
+.feature-image::after {
+    content: "";
+
+    position: absolute;
+    inset: 0;
+
+    background:
+        linear-gradient(
+            120deg,
+            transparent 35%,
+            rgba(255, 255, 255, 0.035),
+            transparent 65%
+        );
+
+    transform:
+        translateX(-120%);
+
+    animation:
+        featureShine
+        8s
+        ease-in-out
+        infinite;
+
+    pointer-events: none;
+}
+
+@keyframes featureShine {
+
+    0%,
+    65% {
+        transform: translateX(-120%);
+    }
+
+    85%,
+    100% {
+        transform: translateX(120%);
+    }
+}
+
+
+/* ========================================
+   ABOUT BUTTON SOFT EFFECT
+======================================== */
+
+.about-btn {
+    position: relative;
+    overflow: hidden;
+}
+
+.about-btn::before {
+    content: "";
+
+    position: absolute;
+
+    top: 0;
+    left: -100%;
+
+    width: 60%;
+    height: 100%;
+
+    background:
+        linear-gradient(
+            90deg,
+            transparent,
+            rgba(255, 255, 255, 0.06),
+            transparent
+        );
+
+    transform: skewX(-20deg);
+
+    transition:
+        left 0.6s ease;
+}
+
+.about-btn:hover::before {
+    left: 130%;
+}
+
+
+/* ========================================
+   REDUCE MOTION
+======================================== */
+
+@media (prefers-reduced-motion: reduce) {
+
+    *,
+    *::before,
+    *::after {
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.01ms !important;
+    }
+
+    .background {
+        transform: scale(1);
+    }
+}
+
+
+
+/* ========================================
+   MONTIS GEAR - MOBILE POLISH
+   Tambahkan di PALING BAWAH CSS
+======================================== */
+
+
+/* ========================================
+   MOBILE DEFAULT
+======================================== */
+
+@media (max-width: 768px) {
+
+    html {
+        overflow-x: hidden;
+    }
+
+    body {
+        overflow-x: hidden;
+    }
+
+    .container {
+        width: 100%;
+        max-width: 100%;
+        padding: 34px 18px 40px;
+    }
+
+
+    /* ==============================
+       PROFILE
+    ============================== */
+
+    .profile {
+        margin-bottom: 28px;
+    }
+
+    .logo {
+        width: 86px;
+        height: 86px;
+
+        margin-bottom: 18px;
+
+        box-shadow:
+            0 14px 35px rgba(0, 0, 0, 0.45),
+            0 0 28px rgba(105, 145, 112, 0.14);
+    }
+
+    .title {
+        font-size: clamp(27px, 8vw, 36px);
+        letter-spacing: 3px;
+        line-height: 1.1;
+    }
+
+    .description {
+        max-width: 340px;
+
+        margin: 12px auto 0;
+
+        font-size: 13px;
+        line-height: 1.7;
+    }
+
+
+    /* ==============================
+       SOCIAL
+    ============================== */
+
+    .social {
+        gap: 9px;
+        margin-top: 20px;
+    }
+
+    .social a {
+        width: 39px;
+        height: 39px;
+
+        font-size: 14px;
+    }
+
+
+    /* ==============================
+       STORE MENU
+    ============================== */
+
+    .store-menu {
+        width: 100%;
+        gap: 11px;
+        margin-top: 26px;
+    }
+
+    .menu-card {
+        min-height: 70px;
+
+        padding: 12px 13px;
+
+        border-radius: 15px;
+
+        gap: 11px;
+
+        transition:
+            transform 0.25s ease,
+            background 0.25s ease,
+            border-color 0.25s ease,
+            box-shadow 0.25s ease;
+    }
+
+
+    /* Icon lebih kecil di HP */
+
+    .menu-icon {
+        width: 44px;
+        height: 44px;
+
+        min-width: 44px;
+        max-width: 44px;
+
+        flex: 0 0 44px;
+
+        border-radius: 12px;
 
         font-size: 17px;
+    }
+
+
+    /* Text card */
+
+    .menu-content {
+        min-width: 0;
+        flex: 1;
+    }
+
+    .menu-content h3 {
+        font-size: 14px;
+        line-height: 1.3;
+    }
+
+    .menu-content p {
+        font-size: 11px;
+        line-height: 1.4;
+
+        margin-top: 3px;
+
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
+    }
+
+
+    /* Arrow */
+
+    .menu-card .arrow {
+        font-size: 11px;
+
+        opacity: 0.65;
+
+        margin-left: 4px;
+    }
+
+
+    /* ==============================
+       MOBILE HOVER
+    ============================== */
+
+    .menu-card:hover {
+        transform: translateY(-2px);
+    }
+
+    .menu-card:active {
+        transform: scale(0.985);
+    }
+
+
+    /* ==============================
+       FEATURE
+    ============================== */
+
+    .feature {
+        margin-top: 34px;
+    }
+
+    .feature-image {
+        border-radius: 17px;
+    }
+
+    .feature-content {
+        padding: 18px 2px 0;
+    }
+
+    .feature-content h2 {
+        font-size: 21px;
+        line-height: 1.3;
+    }
+
+    .feature-content p {
+        font-size: 12px;
+        line-height: 1.7;
+    }
+
+
+    /* ==============================
+       ABOUT BUTTON
+    ============================== */
+
+    .about-btn {
+        width: 100%;
+        max-width: 340px;
+
+        min-height: 46px;
+
+        margin: 25px auto 0;
+
+        border-radius: 13px;
+
+        font-size: 12px;
+    }
+
+
+    /* ==============================
+       QUOTE
+    ============================== */
+
+    .quote {
+        margin-top: 38px;
+        padding: 0 8px;
+    }
+
+    .quote p {
+        font-size: 13px;
+        line-height: 1.8;
+    }
+
+
+    /* ==============================
+       FOOTER
+    ============================== */
+
+    footer {
+        margin-top: 28px;
+        padding-bottom: 20px;
+
+        font-size: 10px;
+    }
+
+
+    /* ==============================
+       CHATBOT
+    ============================== */
+
+    .chatbot {
+        right: 15px;
+        bottom: 15px;
+    }
+
+    .chatbot-toggle {
+        width: 46px;
+        height: 46px;
+
+        font-size: 17px;
+    }
+
+    .chatbot-window {
+        width: calc(100vw - 30px);
+        max-width: 350px;
+
+        right: 0;
+        bottom: 58px;
+
+        border-radius: 16px;
+    }
+
+
+    /* ==============================
+       MUSIC BUTTON
+    ============================== */
+
+    .music-toggle {
+        width: 40px;
+        height: 40px;
+
+        right: 15px;
+        top: 15px;
+
+        font-size: 13px;
+    }
+
+
+    /* ==============================
+       BACKGROUND
+    ============================== */
+
+    .background {
+        transform:
+            translate3d(
+                var(--parallax-x),
+                var(--parallax-y),
+                0
+            )
+            scale(1.03);
+    }
+
+}
+
+
+/* ========================================
+   SMALL PHONE
+   360px - 480px
+======================================== */
+
+@media (max-width: 480px) {
+
+    .container {
+        padding-left: 15px;
+        padding-right: 15px;
+    }
+
+    .logo {
+        width: 78px;
+        height: 78px;
+    }
+
+    .title {
+        font-size: 27px;
+        letter-spacing: 2.5px;
+    }
+
+    .description {
+        font-size: 12px;
+        max-width: 310px;
+    }
+
+    .social a {
+        width: 37px;
+        height: 37px;
+    }
+
+    .store-menu {
+        gap: 9px;
+        margin-top: 23px;
+    }
+
+    .menu-card {
+        min-height: 66px;
+        padding: 10px 11px;
+        border-radius: 14px;
+    }
+
+    .menu-icon {
+        width: 41px;
+        height: 41px;
+
+        min-width: 41px;
+        max-width: 41px;
+
+        flex: 0 0 41px;
+
+        border-radius: 11px;
+        font-size: 15px;
+    }
+
+    .menu-content h3 {
+        font-size: 13px;
+    }
+
+    .menu-content p {
+        font-size: 10px;
+    }
+
+    .menu-card .arrow {
+        font-size: 10px;
+    }
+
+    .feature {
+        margin-top: 28px;
+    }
+
+    .feature-content h2 {
+        font-size: 19px;
+    }
+
+    .feature-content p {
+        font-size: 11px;
+    }
+
+    .quote {
+        margin-top: 32px;
+    }
+
+    .quote p {
+        font-size: 12px;
+    }
+
+}
+
+
+/* ========================================
+   VERY SMALL PHONE
+   320px - 359px
+======================================== */
+
+@media (max-width: 359px) {
+
+    .container {
+        padding-left: 12px;
+        padding-right: 12px;
+    }
+
+    .logo {
+        width: 72px;
+        height: 72px;
+    }
+
+    .title {
+        font-size: 24px;
+        letter-spacing: 2px;
+    }
+
+    .description {
+        font-size: 11px;
+    }
+
+    .menu-card {
+        min-height: 62px;
+        padding: 9px 10px;
+        gap: 9px;
+    }
+
+    .menu-icon {
+        width: 38px;
+        height: 38px;
+
+        min-width: 38px;
+        max-width: 38px;
+
+        flex-basis: 38px;
+
+        border-radius: 10px;
+        font-size: 14px;
+    }
+
+    .menu-content h3 {
+        font-size: 12px;
+    }
+
+    .menu-content p {
+        font-size: 9px;
+    }
+
+    .menu-card .arrow {
+        display: none;
+    }
+
+    .chatbot {
+        right: 11px;
+        bottom: 11px;
+    }
+
+    .music-toggle {
+        right: 11px;
+        top: 11px;
+    }
+
+}
+
+
+/* ========================================
+   TOUCH DEVICE
+   Hilangkan efek hover yang terasa aneh
+======================================== */
+
+@media (hover: none) and (pointer: coarse) {
+
+    .menu-card:hover {
+        transform: none;
+    }
+
+    .menu-card:active {
+        transform: scale(0.985);
+    }
+
+    .about-btn:hover::before {
+        left: -100%;
+    }
+
+}
+
+
+/* ========================================
+   MOBILE ANIMATION
+   Lebih ringan daripada desktop
+======================================== */
+
+@media (max-width: 768px) {
+
+    .background::before {
+        animation-duration: 24s;
+    }
+
+    .background::after {
+        animation-duration: 0.5s;
+        opacity: 0.42;
+    }
+
+    .profile {
+        animation:
+            fadeDown 0.8s ease;
+    }
+
+    .logo {
+        animation:
+            logoBreath 6s ease-in-out infinite;
+    }
+
+    .menu-card:nth-child(1),
+    .menu-card:nth-child(2),
+    .menu-card:nth-child(3),
+    .menu-card:nth-child(4) {
+        animation:
+            fadeUp 0.7s ease both;
     }
 
 }
